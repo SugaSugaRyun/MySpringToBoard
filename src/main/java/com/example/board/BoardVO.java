@@ -1,12 +1,13 @@
 package com.example.board;
 
-import java.util.Date;
+import org.springframework.stereotype.Component;
 
+import java.util.Date;
+@Component
 public class BoardVO {
 	private int seq;
 	private String category;
 	private String title;
-	//private String photo;
 	private String writer;
 	private String content;
 	private Date regdate;
@@ -24,8 +25,6 @@ public class BoardVO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	//public String getPhoto() {return photo;}
-	//public void setPhoto(String photo) {this.photo = photo;}
 	public String getWriter() {
 		return writer;
 	}

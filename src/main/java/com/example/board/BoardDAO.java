@@ -20,7 +20,7 @@ import org.springframework.stereotype.Repository;
 public class BoardDAO {
 
 	@Autowired
-	private JdbcTemplate jdbcTemplate;
+	JdbcTemplate jdbcTemplate;
 
 	public void setTemplate (JdbcTemplate template){
 		this.jdbcTemplate = template;

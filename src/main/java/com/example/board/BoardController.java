@@ -13,15 +13,12 @@ import java.util.List;
 @Controller
 public class BoardController {
     @Autowired
-    BoardDAO boardDAO;
-//    @RequestMapping(value = "/", method = RequestMethod.GET)
-//    public String home() {
-//        return "home";
-//    }
+    BoardServices boardServices;
 
+    //BoardDAO boardDAO;
     @RequestMapping(value = "board/list", method = RequestMethod.GET)
     public String list(Model model) {
-        model.addAttribute("list", boardDAO.getBoardList());
+        model.addAttribute("list", boardServices.getBoardList());
         return "list";
     }
 
@@ -32,7 +29,7 @@ public class BoardController {
 
     @RequestMapping(value = "board/addok", method = RequestMethod.POST)
     public String addPostOk(BoardVO vo) {
-        int i = boardDAO.insertBoard(vo);
+        int i = boardServices.insertBoard(vo);
         if(i == 0){
             System.out.println("데이터 추가 성공!");
         } else {
@@ -43,14 +40,14 @@ public class BoardController {
 
     @RequestMapping(value = "/board/editpost/{id}", method = RequestMethod.GET)
     public String editPost(@PathVariable("id") int id, Model model) {
-        BoardVO boardVO = boardDAO.getBoard(id);
+        BoardVO boardVO = boardServices.getBoard(id);
         model.addAttribute("boardVO", boardVO);
         return "editpost";
     }
 
     @RequestMapping(value = "/board/editok", method = RequestMethod.POST)
     public String editPostOk(BoardVO vo) {
-        int i = boardDAO.updateBoard(vo);
+        int i = boardServices.updateBoard(vo);
         if(i == 0){
             System.out.println("데이터 수정 성공!");
         } else {
@@ -61,7 +58,7 @@ public class BoardController {
 
     @RequestMapping(value = "/board/delete/{id}", method = RequestMethod.GET)
     public String deletePost(@PathVariable("id") int id) {
-        int i = boardDAO.deleteBoard(id);
+        int i = boardServices.deleteBoard(id);
         if(i == 0){
             System.out.println("데이터 삭제 성공!");
         } else {
