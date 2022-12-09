@@ -41,6 +41,7 @@
 </head>
 <body>
 <h1>자유게시판</h1>
+<a href="../login/logout">logout</a>
 <table id="list" width="90%">
     <tr>
         <th>Id</th>
