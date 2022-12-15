@@ -10,4 +10,5 @@ public interface BoardServices{
     public int updateBoard(BoardVO vo);
     public BoardVO getBoard(int seq);
     public List<BoardVO> getBoardList();
+    public int updatelikecount(BoardVO vo);
 }

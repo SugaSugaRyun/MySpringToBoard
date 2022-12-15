@@ -36,4 +36,9 @@ public class BoardDAO {
         List<BoardVO> result = sqlSession.selectList("Board.getBoardList");
         return result;
     }
+
+    public int updatelikecount(BoardVO vo) {
+        int result = sqlSession.update("Board.updatelikecount", vo);
+        return result;
+    }
 }
