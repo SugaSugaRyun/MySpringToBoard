@@ -2,27 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Board">
     <insert id="insertBoard">
-        insert into anonymous (nickname, pw, image, content, likecount, ip)
+        insert into BOARD (category, title, writer, content)
         values
-        (#{nickname} , #{pw} , #{image} , #{content}, 0, #{ip})
+        (#{category} , #{title} , #{writer} , #{content})
     </insert>
     <update id="updateBoard">
-        update anonymous
-        set content=#{content}
+        update BOARD
+        set category=#{category}, title=#{title}, writer=#{writer}, content=#{content}
         where seq=#{seq}
     </update>
     <delete id="deleteBoard">
-        delete from anonymous where seq=#{seq}
+        delete from BOARD where seq=#{seq}
     </delete>
     <select id="getBoard" resultType="board">
-        select * from anonymous where seq=#{seq}
+        select * from BOARD where seq=#{seq}
     </select>
     <select id="getBoardList" resultType="board">
-        select * from anonymous order by seq desc
+        select * from BOARD order by seq desc
     </select>
-    <update id="updatelikecount">
-        update anonymous
-        set likecount=#{likecount}
-        where seq=#{seq}
-    </update>
 </mapper>
